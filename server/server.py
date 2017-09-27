@@ -8,19 +8,14 @@ integers_regex = re.compile(r'\b[\d\.]+\b')
 
 def calc(expr):
    def safe_eval(expr, symbols={}):
+       #Calculate value or pass
        try:
         e = eval(expr, dict(__builtins__=None), symbols)
         return e
        except:
          print('Shit hapennes')
          pass
-   def whole_number_to_float(match):
-       group = match.group()
-       if group.find('.') == -1:
-           return group + '.0'
-       return group
    expr = expr.replace('^', '**')
-   expr = integers_regex.sub(whole_number_to_float, expr)
    return safe_eval(expr)
 
 # Create a TCP/IP socket
