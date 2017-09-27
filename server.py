@@ -43,7 +43,9 @@ while True:
             print('received "%s"' % data)
             if data:
                 print('sending data back to the client')
-                connection.sendall(data)
+                answer = calc(str(data.decode('ascii')))
+                print(answer)
+                connection.send(calc(data).encode('ascii', 'ignore'))
             else:
                 print('no more data from', client_address)
                 break

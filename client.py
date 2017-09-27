@@ -16,18 +16,19 @@ while True:
         #Read expression
         with open(expression_file) as f:
             expression = f.read()
-        # Send data
+        #Send data
         print('sending "%s"' % expression)
-        sock.sendall(expression.encode('utf-8'))
-
-        # Look for the response
-        amount_received = 0
-        amount_expected = len(expression)
-
-        while amount_received < amount_expected:
-            data = sock.recv(16)
-            amount_received += len(data)
-            print('received "%s"' % data)
+        sock.send(expression.encode('ascii', 'ignore'))
+        data = sock.recv(32)
+        print(data)
+        # #Look for the response
+        # amount_received = 0
+        # amount_expected = len(expression)
+        #
+        # while amount_received < amount_expected:
+        #     data = sock.recv(16)
+        #     amount_received += len(data)
+        #     print('received "%s"' % data)
 
     finally:
         print('closing socket')
