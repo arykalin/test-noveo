@@ -2,6 +2,7 @@ import socket
 import sys
 import time
 
+expression_file = 'expression.txt'
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -13,16 +14,15 @@ sock.connect(server_address)
 while True:
     try:
         #Read expression
-        with open(configMapFile) as f:
-            configMapDict = yaml.load(f)
+        with open(expression_file) as f:
+            expression = f.read()
         # Send data
-        message = 'This is the message.  It will be repeated.'
-        print('sending "%s"' % message)
-        sock.sendall(message.encode('utf-8'))
+        print('sending "%s"' % expression)
+        sock.sendall(expression.encode('utf-8'))
 
         # Look for the response
         amount_received = 0
-        amount_expected = len(message)
+        amount_expected = len(expression)
 
         while amount_received < amount_expected:
             data = sock.recv(16)
