@@ -1,0 +1,12 @@
+version: '2'
+services:
+  server:
+    build:
+      context: ./server
+    command: python server.py
+  client:
+    build:
+      context: ./client
+    command: python client.py
+    depends_on:
+    - server

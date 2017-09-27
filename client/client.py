@@ -5,7 +5,7 @@ import time
 expression_file = 'expression.txt'
 
 # Connect the socket to the port where the server is listening
-server_address = ('localhost', 10000)
+server_address = ('server', 10000)
 
 while True:
     #Read expression
@@ -20,10 +20,10 @@ while True:
     sock.send(expression.encode('ascii', 'ignore'))
     data = sock.recv(32)
     print(data.decode('ascii'))
-    print('closing socket')
+    # print('closing socket')
     sock.close()
-    print('closing file')
+    # print('closing file')
     f.close()
-    print('File is closed: {}'.format(f.closed))
-    print('waiting')
+    # print('File is closed: {}'.format(f.closed))
+    # print('waiting')
     time.sleep(1)
