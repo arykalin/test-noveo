@@ -1,3 +1,4 @@
+#This script is reading yaml files with variables and fill kubernetes deployements with them.
 configMapFile='someproject.yaml'
 deployementFiles=[
     'k8s/someproject-address-deployment.yaml',
