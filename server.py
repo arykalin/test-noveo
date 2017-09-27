@@ -2,6 +2,7 @@ import math
 import re
 import socket
 import sys
+import time
 
 integers_regex = re.compile(r'\b[\d\.]+\b')
 
@@ -36,20 +37,16 @@ while True:
     connection, client_address = sock.accept()
     try:
         print('connection from', client_address)
-
         # Receive the data in small chunks and retransmit it
-        while True:
-            data = connection.recv(16)
-            print('received "%s"' % data)
-            if data:
-                print('sending data back to the client')
-                answer = calc(str(data.decode('ascii')))
-                print(answer)
-                connection.send(calc(data).encode('ascii', 'ignore'))
-            else:
-                print('no more data from', client_address)
-                break
+        data = connection.recv(16)
+        print('received "%s"' % data)
+        if data:
+            print('sending data back to the client')
+            answer = str(calc(str(data.decode('ascii'))))
+            print(answer)
+            connection.send(answer.encode('ascii', 'ignore'))
+
 
     finally:
         # Clean up the connection
-        connection.close()
+        time.sleep(1)
