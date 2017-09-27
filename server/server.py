@@ -42,8 +42,6 @@ while True:
             answer = str(calc(str(data.decode('ascii'))))
             print(answer)
             connection.send(answer.encode('ascii', 'ignore'))
-
-
     finally:
         # Clean up the connection
         time.sleep(1)
