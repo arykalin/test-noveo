@@ -15,7 +15,15 @@ while True:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     #Send data
     print('connecting to %s port %s' % server_address)
-    sock.connect(server_address)
+    connected = False
+    while not connected:
+      try:
+        sock.connect(server_address)
+        connected = True
+      except:
+        print('waiting for connection')
+        time.sleep(3)
+        pass
     print('sending "%s"' % expression)
     sock.send(expression.encode('ascii', 'ignore'))
     data = sock.recv(32)

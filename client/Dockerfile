@@ -1,3 +1,3 @@
 FROM python
-COPY server.py .
-CMD [ "python", "./server.py" ]
+COPY client.py .
+CMD [ "python", "./client.py" ]

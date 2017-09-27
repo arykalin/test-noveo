@@ -18,9 +18,6 @@ def calc(expr):
    expr = integers_regex.sub(whole_number_to_float, expr)
    return safe_eval(expr)
 
-e = calc('12+2/3*3-6')
-print(e)
-
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 

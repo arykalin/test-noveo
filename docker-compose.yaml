@@ -10,3 +10,5 @@ services:
     command: python client.py
     depends_on:
     - server
+    volumes:
+      - ./expression.txt:/expression.txt
