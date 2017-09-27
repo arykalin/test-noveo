@@ -3,11 +3,11 @@ services:
   server:
     build:
       context: ./server
-    command: python server.py
+#    command: python server.py
   client:
     build:
       context: ./client
-    command: python client.py
+#    command: python client.py
     depends_on:
     - server
     volumes:

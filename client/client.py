@@ -2,7 +2,7 @@ import socket
 import sys
 import time
 
-expression_file = 'expression.txt'
+expression_file = './client/mnt/expression.txt'
 
 # Connect the socket to the port where the server is listening
 server_address = ('server', 10000)
