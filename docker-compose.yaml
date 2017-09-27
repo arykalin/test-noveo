@@ -11,4 +11,4 @@ services:
     depends_on:
     - server
     volumes:
-      - ./expression.txt:/expression.txt
+      - ./client/mnt:/client/mnt/
