@@ -1,16 +1,11 @@
-import math
-import re
 import socket
-import sys
 import time
 
-integers_regex = re.compile(r'\b[\d\.]+\b')
-
 def calc(expr):
-   def safe_eval(expr, symbols={}):
+   def safe_eval(expr):
        #Calculate value or pass
        try:
-        e = eval(expr, dict(__builtins__=None), symbols)
+        e = eval(expr)
         return e
        except:
          print('Shit hapennes')
